@@ -1,5 +1,6 @@
 let searchBtnEl = document.getElementById("searchBtn");
 let countryInpEl = document.getElementById("countryInp");
+let spinnerEl = document.getElementById("spinner");
 searchBtnEl.addEventListener("click", () => {
     let countryName = countryInpEl.value;
     let finalURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
@@ -7,7 +8,7 @@ searchBtnEl.addEventListener("click", () => {
     fetch(finalURL)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data[0]);
+            //console.log(data[0]);
             //   console.log(data[0].capital[0]);
             //   console.log(data[0].flags.svg);
             //   console.log(data[0].name.common);
@@ -17,6 +18,7 @@ searchBtnEl.addEventListener("click", () => {
             //   console.log(
             //     Object.values(data[0].languages).toString().split(",").join(", ")
             //   );
+            spinnerEl.classList.add("d-none");
             result.innerHTML = `
         <img src="${data[0].flags.svg}" class="flag-img">
         <h2>${data[0].name.common}</h2>
